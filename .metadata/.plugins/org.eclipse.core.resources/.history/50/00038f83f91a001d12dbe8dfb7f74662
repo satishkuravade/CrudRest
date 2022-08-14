@@ -1,0 +1,90 @@
+package com.example.SpringBootcrudeWithRestful.Dao;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.SpringBootcrudeWithRestful.Model.Employee;
+
+public class DaoImpl implements DaoI{
+
+	@Autowired
+	private SessionFactory sf;
+	
+	
+	
+	@Override
+	public int saveEmployeeDao(Employee emp) {
+		Session session = sf.openSession();
+		session.beginTransaction();
+		int id = (int)session.save(emp);
+		System.out.println(id);
+		session.getTransaction().commit();
+		return id;
+	}
+
+//	@Override
+//	public List<Employee> saveMultiEmployeeDao(List<Employee> emp) {
+//	Session session = sf.openSession();
+//	session.getTransaction();
+//	session.
+//		return null;
+//	}
+
+	@Override
+	public Employee getEmployeeById(Integer empId) {
+		Session session = sf.openSession();
+		String hql="from user";
+		Query query = session.createQuery(hql);
+		List list = query.getResultList();
+		return list;
+		
+	}
+
+	@Override
+	public List<Employee> getAllEmployeeDao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee update(Integer empId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Employee> updateMultiEmployee(List<Employee> emp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee loginCheck(String empName, int empId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteAllEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean deleteById(int empId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Employee> getDataByAge(Integer empAge) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

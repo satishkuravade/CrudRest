@@ -1,0 +1,26 @@
+package com.example.SpringBootcrudeWithRestful.EmployeeController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.SpringBootcrudeWithRestful.Model.Employee;
+import com.example.SpringBootcrudeWithRestful.Service.ServiceI;
+
+@Controller
+public class EmployeeController {
+
+	@Autowired
+	private ServiceI serviceI;
+	
+	@PostMapping("/save")
+	public int  saveEmployee (Employee emp) {
+		int id = serviceI.saveEmployeeDao(emp);
+		return id;
+		
+		
+	}
+	
+	public String getAllEmployee()
+}
